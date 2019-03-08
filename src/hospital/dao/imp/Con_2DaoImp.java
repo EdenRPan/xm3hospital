@@ -38,7 +38,7 @@ public class Con_2DaoImp extends DataBaseDao implements Con_2Dao {
 	public int updataTitle(Content_2 con_2) {
 		int i;
 		String sql = "update content_2 set title = ? where id = ?";
-		i = super.exeUptate(sql,con_2.getTitle());
+		i = super.exeUptate(sql,con_2.getTitle(),con_2.getId());
 		return i;
 	}
 
