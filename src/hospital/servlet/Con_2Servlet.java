@@ -29,6 +29,8 @@ public class Con_2Servlet extends HttpServlet {
 			break;
 			case "addTitle" : addTitle(request,response);//添加标题
 			break;
+			case "deleteCon_2" : deleteCon_2(request,response);//删除对象
+				break;
 		}
 	}
 
@@ -64,6 +66,18 @@ public class Con_2Servlet extends HttpServlet {
 			response.sendRedirect("/hospital/Con_2Servlet/searchAllCon");
 		}else {
 			request.setAttribute("msg","添加失败");
+			request.getRequestDispatcher("/admin/message.jsp").forward(request,response);
+		}
+	}
+
+	protected void deleteCon_2(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Content_2 con_2 = new Content_2();
+		con_2.setId(Integer.parseInt(request.getParameter("cid")));
+
+		if (new Con_2ServiceImp().deleteCon_2(con_2)){
+			response.sendRedirect("/hospital/Con_2Servlet/searchAllCon");
+		}else {
+			request.setAttribute("msg","删除失败");
 			request.getRequestDispatcher("/admin/message.jsp").forward(request,response);
 		}
 	}

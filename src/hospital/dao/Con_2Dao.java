@@ -10,4 +10,5 @@ public interface Con_2Dao {
 	int updataTitle(Content_2 con_2);
 	List<Content_2> searchAll();
 	Content_2 searchOne(Content_2 con_2);
+	int deleteCon_2(Content_2 con_2);
 }

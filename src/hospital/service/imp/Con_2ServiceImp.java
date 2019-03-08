@@ -42,4 +42,12 @@ public class Con_2ServiceImp implements Con_2Service {
 	public Content_2 searchOneCon(Content_2 con_2) {
 		return new Con_2DaoImp(tool.getConn()).searchOne(con_2);
 	}
+
+	@Override
+	public boolean deleteCon_2(Content_2 con_2) {
+		if (new Con_2DaoImp(tool.getConn()).deleteCon_2(con_2) > 0){
+			return true;
+		}
+		return false;
+	}
 }

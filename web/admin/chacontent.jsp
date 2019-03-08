@@ -37,5 +37,10 @@
     标题：<input type="text" name="ntitle"><br>
     <input type="submit" value="添加">
 </form>
+<h3>删除内容</h3>
+<form action="${pageContext.request.contextPath}/Con_2Servlet/deleteCon_2" method="post">
+    需要删除项ID：<input type="number" name="cid" value="1"><br>
+    <input type="submit" value="删除">
+</form>
 </body>
 </html>

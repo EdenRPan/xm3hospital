@@ -77,4 +77,11 @@ public class Con_2DaoImp extends DataBaseDao implements Con_2Dao {
 		}
 		return content_2;
 	}
+
+	@Override
+	public int deleteCon_2(Content_2 con_2) {
+		String sql = "delete from content_2 where id = ?";
+		int i = super.exeUptate(sql,con_2.getId());
+		return i;
+	}
 }
