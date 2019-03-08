@@ -32,7 +32,7 @@
 </form>
 <%--<textarea name="content" form = "formName">表单之外的文本域指定于某个表单</textarea>--%>
 <h3>添加标题</h3>
-<form action="${pageContext.request.contextPath}/Con_2Servlet/chaContent" method="post">
+<form action="${pageContext.request.contextPath}/Con_2Servlet/addTitle" method="post">
     需要更改项ID：<input type="number" name="cid" value="1"><br>
     标题：<input type="text" name="ntitle"><br>
     <input type="submit" value="添加">
