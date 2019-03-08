@@ -39,7 +39,7 @@
 <br>
 
 <h2>增添数据</h2>
-<form method="post" action="${pageContext.request.contextPath}/NavServlet/addNav" style="border: 1px solid black">
+<form method="post" action="${pageContext.request.contextPath}/NavServlet/addNav" style="border: 1px solid black; display: inline-block">
     列名：<input type="text" name="li"><br>
     连接：<input type="text" name="href"><br>
     <input type="submit" value="添加">
@@ -47,14 +47,14 @@
 <br>
 
 <h2>删除数据</h2>
-<form method="post" action="${pageContext.request.contextPath}/NavServlet/deleteNav" style="border: 1px solid black">
+<form method="post" action="${pageContext.request.contextPath}/NavServlet/deleteNav" style="border: 1px solid black; display: inline-block">
     需要删除项ID：<input type="number" name="id" value="1"><br>
     <input type="submit" value="删除">
 </form>
 <br>
 
 <h2>修改数据</h2>
-<form method="post" action="${pageContext.request.contextPath}/NavServlet/modifyNav" style="border: 1px solid black">
+<form method="post" action="${pageContext.request.contextPath}/NavServlet/modifyNav" style="border: 1px solid black; display: inline-block">
     更改项ID：<input type="number" name="id" value="1"><br>
     新列名：<input type="text" name="li"><br>
     新连接：<input type="text" name="href"><br>
