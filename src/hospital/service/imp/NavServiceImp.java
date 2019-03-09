@@ -66,8 +66,32 @@ public class NavServiceImp implements NavService {
 	}
 
 	@Override
-	public List<News> newsList() {
+	public List<News> newsList() {//今日喜报增删改查
 		return new NavDaoImp(tool.getConn()).news();
+	}
+
+	@Override
+	public boolean addNews(News news) {
+		if (new NavDaoImp(tool.getConn()).addNews(news) > 0){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteNews(News news) {
+		if (new NavDaoImp(tool.getConn()).deleteNews(news) > 0){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean modifyNews(News news) {
+		if (new NavDaoImp(tool.getConn()).modifyNews(news) > 0){
+			return true;
+		}
+		return false;
 	}
 
 	@Override

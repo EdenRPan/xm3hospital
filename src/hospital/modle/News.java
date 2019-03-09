@@ -4,8 +4,6 @@ public class News {
 	int id;
 	String parents;
 	int baby;
-	String info;
-	String infohref;
 	Double weight;
 	Sex sex;//关联表，成员变量直接用类
 
@@ -15,8 +13,8 @@ public class News {
 				"id=" + id +
 				", parents='" + parents + '\'' +
 				", baby=" + baby +
-				", info='" + info + '\'' +
-				", infohref='" + infohref + '\'' +
+				", weight=" + weight +
+				", sex=" + sex +
 				'}';
 	}
 
@@ -60,19 +58,4 @@ public class News {
 		this.baby = baby;
 	}
 
-	public String getInfo() {
-		return info;
-	}
-
-	public void setInfo(String info) {
-		this.info = info;
-	}
-
-	public String getInfohref() {
-		return infohref;
-	}
-
-	public void setInfohref(String infohref) {
-		this.infohref = infohref;
-	}
 }

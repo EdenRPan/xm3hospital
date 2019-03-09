@@ -2,6 +2,7 @@ package hospital.servlet;
 
 import hospital.dao.imp.NavDaoImp;
 import hospital.modle.Nav;
+import hospital.modle.News;
 import hospital.modle.Page;
 import hospital.service.imp.NavServiceImp;
 import hospital.tool.DataBaseTool;
@@ -25,15 +26,23 @@ public class NavServlet extends HttpServlet {
 		String action = url.substring(url.lastIndexOf("/") + 1);
 		switch (action){
 			case "modifyNav" : modifyNav(request,response);
-			break;
+			    break;
 			case "deleteNav" : deleteNav(request,response);
-			break;
+			    break;
 			case "addNav" : addNav(request,response);
-			break;
+			    break;
 			case "searchAllNav" : searchAllNav(request,response);
-			break;
+			    break;
 			case "pageBean" : pageBean(request,response);
-			break;
+			    break;
+			case "addNews" : addNews(request,response);
+				break;
+			case "deleteNews" : deleteNews(request,response);
+				break;
+			case "modifyNews" : modifyNews(request,response);
+				break;
+			case "searchAllNews" : searchAllNews(request,response);
+				break;
 		}
 	}
 
@@ -88,5 +97,52 @@ public class NavServlet extends HttpServlet {
 
 		request.getSession().setAttribute("pagelist",page);
 		request.getRequestDispatcher("/admin/homenav.jsp").forward(request,response);
+	}
+
+	//今日喜报
+	protected void searchAllNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<News> newsList = new NavServiceImp().newsList();
+		request.getSession().setAttribute("newsList",newsList);
+
+		response.sendRedirect("/hospital/admin/daynews.jsp");
+	}
+
+	protected void addNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		News news = new News();
+		news.setParents(request.getParameter("parents"));
+		news.setBaby(Integer.parseInt(request.getParameter("baby")));
+		news.setWeight(Double.parseDouble(request.getParameter("weight")));
+		if (new NavServiceImp().addNews(news)){
+			response.sendRedirect("/hospital/NavServlet/searchAllNews");
+		}else{
+			request.setAttribute("mag","添加失败");
+			request.getRequestDispatcher("/admin/message.jsp").forward(request,response);
+		}
+	}
+
+	protected void deleteNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		News news = new News();
+		news.setId(Integer.parseInt(request.getParameter("did")));
+		if (new NavServiceImp().deleteNews(news)){
+			response.sendRedirect("/hospital/NavServlet/searchAllNews");
+		}else{
+			request.setAttribute("mag","删除失败");
+			request.getRequestDispatcher("/admin/message.jsp").forward(request,response);
+		}
+	}
+
+	protected void modifyNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		News news = new News();
+		news.setId(Integer.parseInt(request.getParameter("mid")));
+		news.setParents(request.getParameter("nparents"));
+		news.setBaby(Integer.parseInt(request.getParameter("nbaby")));
+		news.setWeight(Double.parseDouble(request.getParameter("nweight")));
+
+		if (new NavServiceImp().modifyNews(news)){
+			response.sendRedirect("/hospital/NavServlet/searchAllNews");
+		}else{
+			request.setAttribute("mag","修改失败");
+			request.getRequestDispatcher("/admin/message.jsp").forward(request,response);
+		}
 	}
 }

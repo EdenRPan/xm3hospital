@@ -20,6 +20,9 @@ public interface NavService {
 
 	//今日喜报
 	List<News> newsList();
+	boolean addNews(News news);
+	boolean deleteNews(News news);
+	boolean modifyNews(News news);
 
 	//三坨
 	List<Picture> threePart();

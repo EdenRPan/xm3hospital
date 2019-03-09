@@ -232,7 +232,7 @@
 
               <c:forEach items="${newsList}" var="news">
                 <li>
-                  <a href="${news.infohref}">恭喜 ${news.parents} 夫妇</a>
+                  <a href="#">恭喜 ${news.parents} 夫妇</a>
                   <b>喜得${news.sex.sex} 重${news.weight}KG</b>
                 </li>
               </c:forEach>
@@ -278,6 +278,7 @@
         <i class="h2"></i>
         <div class="news-bottom-web">
 
+          <%--九大块，显示更多--%>
           <c:forEach items="${p9List}" var="p9s">
             <div>
               <em></em>

@@ -165,9 +165,8 @@ public class NavDaoImp extends DataBaseDao implements NavDao {
 			try {
 				if (!resultSet.next()) break;
 				News news = new News();
+				news.setId(Integer.parseInt(resultSet.getString("id")));
 				news.setParents(resultSet.getString("parents"));
-				news.setInfo(resultSet.getString("info"));
-				news.setInfohref(resultSet.getString("infohref"));
 				news.setWeight(resultSet.getDouble("weight"));
 				Sex sex = new Sex();
 				sex.setId(resultSet.getInt("baby"));
@@ -180,6 +179,30 @@ public class NavDaoImp extends DataBaseDao implements NavDao {
 			}
 		}
 		return newsList;
+	}
+
+	@Override
+	public int addNews(News news) {
+		String sql = "insert into daynews(parents,baby,weight) values(?,?,?)";
+		Object[] objects = new Object[]{
+				news.getParents(),news.getBaby(),news.getWeight()
+		};
+		return super.exeUptate(sql,objects);
+	}
+
+	@Override
+	public int deleteNews(News news) {
+		String sql = "delete from daynews where id = ?";
+		return super.exeUptate(sql,news.getId());
+	}
+
+	@Override
+	public int modifyNews(News news) {
+		String sql = "update daynews set parents = ?,baby = ?,weight = ? where id = ?";
+		Object[] objects = new Object[]{
+				news.getParents(),news.getBaby(),news.getWeight(),news.getId()
+		};
+		return super.exeUptate(sql,objects);
 	}
 
 	@Override

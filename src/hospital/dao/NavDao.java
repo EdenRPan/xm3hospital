@@ -20,7 +20,10 @@ public interface NavDao<E> {
 	List<Picture> rotation();
 
 	//今日喜报
-	List<News> news();
+	List<News> news();//查询所有
+	int addNews(News news);//增添
+	int deleteNews(News news);
+	int modifyNews(News news);
 
 	//中间三坨
 	List<Picture> threePart();

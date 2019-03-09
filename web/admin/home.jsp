@@ -13,6 +13,8 @@
 <body>
 <a href="${pageContext.request.contextPath}/admin/chome.jsp">主页交流中心修改</a>
 <br>
+<a href="${pageContext.request.contextPath}/NavServlet/searchAllNews">主页今日喜报修改</a>
+<br>
 <a href="${pageContext.request.contextPath}/NavServlet/pageBean">主页ul导航增删改</a>
 <br>
 <a href="${pageContext.request.contextPath}/Con_2Servlet/searchAllCon">所有二级内容及修改</a>
